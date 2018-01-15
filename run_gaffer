@@ -8,6 +8,7 @@ sudo rm -rf ${data_dir}
 
 GAFFER_VERSION=1.2.0
 PROJECT=my-project
+BUCKET=my-bucket
 
 # Initialise data directory for Hadoop, ZK, Accumulo
 mkdir -p ${data_dir}/zookeeper
@@ -22,10 +23,10 @@ docker run -d --name zookeeper -v ${data_dir}/zookeeper:/data \
 # Run Accumulo
 docker run -d --name accumulo \
        --link zookeeper:zookeeper \
-       -e HDFS_VOLUMES=gs://${PROJECT}/accumulo \
-       -e NAMENODE_URI=gs://${PROJECT}/ \
+       -e HDFS_VOLUMES=gs://${BUCKET}/accumulo \
+       -e NAMENODE_URI=gs://${BUCKET}/ \
        -e PROJECT_ID=${PROJECT} \
-       -v $(pwd)/key:/key
+       -v $(pwd)/key:/key \
        cybermaggedon/accumulo-gs:${GAFFER_VERSION}
 
 # Run Wildfly, exposing port 8080.
