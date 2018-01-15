@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+  <property>
+    <name>fs.gs.working.dir</name>
+    <value>/</value>
+  </property>
+  <property>
+    
+    <!-- The metadata cache is a storage accelerator used in Google Cloud.
+	 It doesn't exist outside of the cloud. -->
+    <name>fs.gs.metadata.cache.enable</name>
+    <value>false</value>
+
+  </property>
+  <property>
+
+    <!-- My Google Cloud project ID goes here. -->
+    <name>fs.gs.project.id</name>
+    <value>@PROJECT_ID@</value>
+
+  </property>
+  <property>
+    <name>google.cloud.auth.service.account.enable</name>
+    <value>true</value>
+  </property>
+  <property>
+    <name>google.cloud.auth.service.account.json.keyfile</name>
+    <value>/key/private.json</value>
+  </property>
+</configuration>
